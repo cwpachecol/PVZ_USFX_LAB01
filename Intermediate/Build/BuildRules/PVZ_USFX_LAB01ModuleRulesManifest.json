@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\src_UE_ejemplos\\PVZ_USFX_LAB01\\Source\\PVZ_USFX_LAB01\\PVZ_USFX_LAB01.Build.cs",
+		"C:\\src_UE_ejemplos\\PVZ_USFX_LAB01\\Source\\PVZ_USFX_LAB01.Target.cs",
+		"C:\\src_UE_ejemplos\\PVZ_USFX_LAB01\\Source\\PVZ_USFX_LAB01Editor.Target.cs"
+	],
+	"EngineVersion": "4.27.2"
+}
