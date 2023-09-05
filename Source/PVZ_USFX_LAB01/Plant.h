@@ -20,7 +20,10 @@ public:
 	//class UStaticMeshComponent* PlantMesh;
 
 	UPROPERTY (EditAnywhere)
-	UStaticMeshComponent* PlantMesh;
+	UStaticMeshComponent* PlantMeshComponent;
+
+	void eliminarZombie(class APVZ_USFX_LAB01GameMode* GameModeBasePVZ);
+
 
 protected:
 	// Called when the game starts or when spawned

@@ -19,6 +19,9 @@ AZombie::AZombie()
 	{
 		ZombieMesh->SetStaticMesh(ZombieMeshAsset.Object);
 	}
+
+	energia = 100.0f;
+
 }
 
 // Called when the game starts or when spawned
