@@ -21,7 +21,7 @@ AZombie::AZombie()
 	}
 
 	energia = 100.0f;
-
+	MovementSpeed = 0.01f;
 }
 
 // Called when the game starts or when spawned
@@ -38,12 +38,14 @@ void AZombie::Tick(float DeltaTime)
 
 	// Supongamos que ya tienes una instancia de APlantaActor llamada MyPlantaActor
 
-	FVector TargetLocation = FVector(100.0f, 0.0f, 0.0f); // Cambia la ubicación objetivo según tus necesidades
-	float MovementSpeed = 100.0f; // Velocidad de movimiento
+	FVector TargetLocation = FVector(-800.0f, -600.0f, 160.0f);
+	// Cambia la ubicación objetivo según tus necesidades
+	 // Velocidad de movimiento
 
 	// Calcula la dirección y distancia al objetivo
-	FVector Direction = (TargetLocation - this->GetActorLocation()).GetSafeNormal();
-	float DistanceToTarget = FVector::Dist(TargetLocation, this->GetActorLocation());
+	//FVector Direction = (TargetLocation - this->GetActorLocation()).GetSafeNormal();
+	FVector Direction = TargetLocation - FVector(-800.0f, 400.0f, 160.0f);
+	float DistanceToTarget = FVector::Dist(TargetLocation, FVector(-800.0f, 400.0f, 160.0f));
 
 	// Calcula el desplazamiento en este frame
 	float DeltaMove = MovementSpeed * GetWorld()->DeltaTimeSeconds;

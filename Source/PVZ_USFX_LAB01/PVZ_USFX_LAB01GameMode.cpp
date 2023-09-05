@@ -5,10 +5,14 @@
 #include "Zombie.h"
 #include "Plant.h"
 
+
 APVZ_USFX_LAB01GameMode::APVZ_USFX_LAB01GameMode()
 {
+	PrimaryActorTick.bCanEverTick = true;
 	// set default pawn class to our character class
 	DefaultPawnClass = APVZ_USFX_LAB01Pawn::StaticClass();
+
+	TiempoTranscurrido = 0.0f;
 }
 
 void APVZ_USFX_LAB01GameMode::BeginPlay()
@@ -44,8 +48,9 @@ void APVZ_USFX_LAB01GameMode::BeginPlay()
 	// Crear objetos y agregarlos al vector
 	// Se crean los Zombies dinamicamente
 	for (int i = 0; i < 5; i++) {
-		SpawnLocationZombie.X += 80;
+		SpawnLocationZombie.X += 100;
 		AZombie* NuevoZombie = GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
+		NuevoZombie->MovementSpeed = 0.02f;
 		vectorZombies.Add(NuevoZombie);
 	}
 
@@ -55,7 +60,7 @@ void APVZ_USFX_LAB01GameMode::BeginPlay()
 
 		
 	for (int i = 0; i < 5; i++) {
-		SpawnLocationPlantTemp.X += 80;
+		SpawnLocationPlantTemp.X += 100;
 		for (int j = 0; j < 2; j++) {
 			SpawnLocationPlantTemp.Y += 80;
 			APlant* NuevoPlant = GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), SpawnLocationPlantTemp, FRotator::ZeroRotator);
@@ -67,6 +72,23 @@ void APVZ_USFX_LAB01GameMode::BeginPlay()
 
 
 
+
+}
+
+void APVZ_USFX_LAB01GameMode::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	TiempoTranscurrido += DeltaTime;
+
+	if (TiempoTranscurrido > 2.0f) {
+		// Iterar sobre el vector de objetos
+		for (int i = 0; i < vectorZombies.Num(); i++) {
+			vectorZombies[i]->MovementSpeed = FMath::FRand() * 0.1f;
+			//vectorZombies[i]->MovementSpeed += i * 1.0f;
+		}
+		TiempoTranscurrido = 0.0f;
+	}
 
 }
 

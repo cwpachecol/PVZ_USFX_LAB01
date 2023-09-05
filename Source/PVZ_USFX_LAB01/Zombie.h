@@ -27,4 +27,5 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	float energia;
+	float MovementSpeed = 0.01f;
 };
